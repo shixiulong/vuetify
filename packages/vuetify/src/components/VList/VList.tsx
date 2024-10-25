@@ -241,10 +241,10 @@ export const VList = genericComponent<new <
     }
 
     watch([contentRef, () => props.prependSpacer], () => {
-      if (contentRef.value && props.prependSpacer) {
-        const width = convertToUnit(props.prependSpacer)
+      if (props.prependSpacer && contentRef.value) {
+        const spacer = convertToUnit(props.prependSpacer)
 
-        if (width) contentRef.value.style.setProperty('--v-list-prepend-spacer-width', width)
+        if (spacer) contentRef.value.style.setProperty('--v-list-prepend-spacer-width', spacer)
       }
     }, { immediate: true })
 
