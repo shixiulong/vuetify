@@ -21,8 +21,8 @@ import { makeThemeProps, provideTheme } from '@/composables/theme'
 import { makeVariantProps } from '@/composables/variant'
 
 // Utilities
-import { computed, ref, shallowRef, toRef } from 'vue'
-import { EventProp, focusChild, genericComponent, getPropertyFromItem, omit, propsFactory, useRender } from '@/util'
+import { computed, ref, shallowRef, toRef, watch } from 'vue'
+import { convertToUnit, EventProp, focusChild, genericComponent, getPropertyFromItem, omit, propsFactory, useRender } from '@/util'
 
 // Types
 import type { PropType } from 'vue'
@@ -92,6 +92,7 @@ export const makeVListProps = propsFactory({
     type: [Boolean, String] as PropType<'one' | 'two' | 'three' | false>,
     default: 'one',
   },
+  prependSpacer: [Number, String],
   slim: Boolean,
   nav: Boolean,
 
@@ -238,6 +239,14 @@ export const VList = genericComponent<new <
         return focusChild(contentRef.value, location)
       }
     }
+
+    watch([contentRef, () => props.prependSpacer], () => {
+      if (contentRef.value && props.prependSpacer) {
+        const width = convertToUnit(props.prependSpacer)
+
+        if (width) contentRef.value.style.setProperty('--v-list-prepend-spacer-width', width)
+      }
+    }, { immediate: true })
 
     useRender(() => {
       return (
