@@ -92,8 +92,8 @@ export const makeVListProps = propsFactory({
     type: [Boolean, String] as PropType<'one' | 'two' | 'three' | false>,
     default: 'one',
   },
-  prependSpacer: [Number, String],
   slim: Boolean,
+  slimWidth: [Number, String],
   nav: Boolean,
 
   'onClick:open': EventProp<[{ id: unknown, value: boolean, path: unknown[] }]>(),
@@ -240,11 +240,11 @@ export const VList = genericComponent<new <
       }
     }
 
-    watch([contentRef, () => props.prependSpacer], () => {
-      if (props.prependSpacer && contentRef.value) {
-        const spacer = convertToUnit(props.prependSpacer)
+    watch([contentRef, () => props.slimWidth], () => {
+      if (props.slimWidth && contentRef.value) {
+        const spacer = convertToUnit(props.slimWidth)
 
-        if (spacer) contentRef.value.style.setProperty('--v-list-prepend-spacer-width', spacer)
+        if (spacer) contentRef.value.style.setProperty('--v-list-slim-spacer-width', spacer)
       }
     }, { immediate: true })
 
