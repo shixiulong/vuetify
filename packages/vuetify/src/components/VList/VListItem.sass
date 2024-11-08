@@ -307,8 +307,8 @@
     &--fluid
       --list-indent-size: 0px
 
-    &--fluid.v-list-group--prepend
-      --parent-padding: var(--indent-padding)
+    &--hasPrependIcon
+      --parent-padding: calc(var(--indent-padding) + var(--prepend-width))
 
   .v-list-group__items
     --indent-padding: calc(var(--parent-padding) + var(--list-indent-size))
