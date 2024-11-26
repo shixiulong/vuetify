@@ -94,7 +94,7 @@ export const VListGroup = genericComponent<VListGroupSlots>()({
           'v-list-group',
           {
             'v-list-group--fluid': props.fluid,
-            'v-list-group--hasPrependIcon': props.prependIcon,
+            'v-list-group--has-prepend-icon': props.prependIcon,
             'v-list-group--subgroup': props.subgroup,
             'v-list-group--open': isOpen.value,
           },

@@ -44,7 +44,7 @@ export const VTreeviewGroup = genericComponent<VListGroupSlots>()({
           class={[
             'v-treeview-group',
             // VTreeviewGroup always has an activator containing toggle icon in prepend
-            'v-list-group--hasPrependIcon',
+            'v-list-group--has-prepend-icon',
             props.class,
           ]}
           subgroup
