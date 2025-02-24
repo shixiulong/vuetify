@@ -29,6 +29,9 @@ export type VTreeviewChildrenSlots<T> = {
     item: T
     internalItem: InternalListItem<T>
   }
+  toggle: {
+    props: { onClick?: (e: MouseEvent) => void }
+  }
 }
 
 export const makeVTreeviewChildrenProps = propsFactory({
@@ -93,6 +96,7 @@ export const VTreeviewChildren = genericComponent<new <T extends InternalListIte
       const { children, props: itemProps } = item
       const loading = isLoading.has(item.value)
       const slotsWithItem = {
+        toggle: slots.toggle ? slotProps => slots.toggle?.(slotProps) : undefined,
         prepend: slotProps => (
           <>
             { props.selectable && (!children || (children && !['leaf', 'single-leaf'].includes(props.selectStrategy as string))) && (
