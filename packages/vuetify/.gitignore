@@ -1,18 +1,8 @@
-/dev/Playground.vue
-/dev/components.d.ts
-/cypress/screenshots
+
 
 # Built files
-/es5/
-/lib/
-/lib-temp/
-/types-temp/
-/dist/
-/dev/dist/
+/node_modules
 
-# local env files
-.env.local
-.env.*.local
 
 # Log files
 npm-debug.log*
